@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Algoritma_Dan_Struktur_Data.iml" filepath="$PROJECT_DIR$/.idea/Algoritma_Dan_Struktur_Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Doubly_Linked_List/Doubly_Linked_List/Doubly_Linked_List.iml" filepath="$PROJECT_DIR$/Doubly_Linked_List/Doubly_Linked_List/Doubly_Linked_List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Doubly_Linked_List/Doubly_Linked_list.iml" filepath="$PROJECT_DIR$/Doubly_Linked_List/Doubly_Linked_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Singly_Lingked_List/Singly_Lingked_List.iml" filepath="$PROJECT_DIR$/Singly_Lingked_List/Singly_Lingked_List.iml" />
+    </modules>
+  </component>
+</project>
