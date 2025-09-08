@@ -1,18 +1,24 @@
 public class Main {
 
     public static void main(String[] args) {
-        Node list = new Node();
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.addFirst("S");
+        list.addLast("I");
+        list.insertAfter("S" , new Node("B"));
+        list.insertBefore("B", new Node("K"));
+        list.insertAfter("B", new Node("L"));
+        list.removeFirst();
+        list.removeLast();
+        list.remove("B");
 
-        System.out.println("Head " + list.printSLL);
+        list.printSLL();
+        System.out.println(list.size);
     }
 }
 
 class Node {
     Object data;
     Node next;
-
-    Node head, tail;
-    int size = 0;
 
     Node () {}
 
@@ -24,8 +30,13 @@ class Node {
         this.data = data;
         this.next = next;
     }
+}
 
-    void intialized () {
+class SinglyLinkedList {
+    Node head, tail;
+    int size = 0;
+
+    void intialization () {
         head = tail = null;
     }
 
@@ -37,37 +48,128 @@ class Node {
         return size;
     }
 
-    void addFirst (Object data) {
-        Node item = new Node(data);
+    void addFirst (Object targetData) {
+        Node newNode = new Node(targetData);
         if (isEmpty() ) {
-            head = item;
-            tail = item;
+            head = newNode;
+            tail = newNode;
         } else {
-            item.next = head;
-            head = item;
+            newNode.next = head;
+            head = newNode;
         }
         size++;
     }
 
-    void addLast (Object data) {
-        Node item = new Node(data);
+    void addLast (Object targetData) {
+        Node newNode = new Node(targetData);
         if (isEmpty()) {
-            head = tail = item;
+            head = tail = newNode;
         } else {
-            tail.next = item;
-            tail = item;
+            tail.next = newNode;
+            tail = newNode;
         }
         size++;
     }
+
+    void insertAfter(Object targetData, Node newNode) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data.equals(targetData)) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                size++;
+                return;
+            }
+            temp = temp.next;
+        }
+    }
+
+    void insertBefore(Object targetData, Node input) {
+        Node newNode = input;
+
+        if (head.data.equals(targetData)) {
+            newNode.next = head;
+            head = newNode;
+            size++;
+            return;
+        }
+
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.next.data.equals(targetData)) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                size++;
+                return;
+            }
+            temp = temp.next;
+        }
+    }
+
+    void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Data Kosong Nih");
+            return;
+        }
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+    }
+
+    void removeLast() {
+        Node temp = head;
+        if (!isEmpty()) {
+            if (tail == head)
+                head = tail = null;
+            else {
+                while (temp.next != tail) {
+                    temp = temp.next;
+                }
+                temp.next = null;
+                tail = temp;
+                temp = null;
+            }
+            size--;
+        }
+        else
+            System.out.println("Data Kosong Nih");
+    }
+
+    void remove(Object targetData) {
+        Node temp = head;
+        if (!isEmpty()) {
+            while (temp != null) {
+                if (temp.next.data.equals(targetData)) {
+                    temp.next = temp.next.next;
+                    if (temp.next == null) {
+                        tail = temp;
+                        return;
+                    } else if ((temp.data == targetData) && (temp == head)) {
+                        this.removeFirst();
+                        return;
+                    }
+                }
+            }
+        } else
+            System.out.println("Data Kosong Nih");
+    size--;
+    }
+
 
     public void printSLL() {
         Node temp = head;
         if (isEmpty()) {
-            System.out.println("Kosong nih");
-        } while (temp != null) {
-            System.out.println(temp.data = " - ");
+            System.out.println("data Kosong nih");
+            return;
+        }
+
+        while (temp != null) {
+            System.out.print(temp.data + " - ");
             temp = temp.next;
         }
+        System.out.println();
     }
 }
 
