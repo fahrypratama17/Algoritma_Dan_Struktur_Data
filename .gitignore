@@ -1,5 +1,19 @@
-/.idea/
-/Code_Algoritma_Dan_Struktur_Data/.idea/
-/Code_Algoritma_Dan_Struktur_Data/out/
-/Praktikum/.idea/
-/Praktikum/Praktikum.iml
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Build output
+target/
+build/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
