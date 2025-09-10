@@ -1,5 +1,4 @@
 public class Main {
-
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
         list.addFirst("S");
@@ -24,7 +23,7 @@ public class Main {
         list.removeAt(1);
 
         list.printSLL();
-        System.out.println(list.size());
+        System.out.println("Size: " + list.size());
         System.out.println();
         System.out.println(list.get(1));
         System.out.println(list.get(5));
