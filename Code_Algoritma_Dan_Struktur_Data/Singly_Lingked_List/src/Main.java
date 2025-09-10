@@ -20,9 +20,15 @@ public class Main {
         list.printSLL();
         System.out.println(list.size());
         list.remove("F");
+        list.insertAt(2, "J");
+        list.removeAt(1);
 
         list.printSLL();
         System.out.println(list.size());
+        System.out.println();
+        System.out.println(list.get(1));
+        System.out.println(list.get(5));
+        System.out.println(list.indexOf("Z"));
     }
 }
 
@@ -94,9 +100,7 @@ class SinglyLinkedList {
         }
     }
 
-    void insertBefore(Object targetData, Node input) {
-        Node newNode = input;
-
+    void insertBefore(Object targetData, Node newNode) {
         if (isEmpty()) {
             return;
         }
@@ -122,7 +126,7 @@ class SinglyLinkedList {
 
     void removeFirst() {
         if (isEmpty()) {
-            System.out.println("Datanya Kosong Nih");
+            System.err.println("Datanya Kosong Nih");
             return;
         }
         head = head.next;
@@ -134,7 +138,7 @@ class SinglyLinkedList {
 
     void removeLast() {
         if (isEmpty()) {
-            System.out.println("Datanya Kosong Nih");
+            System.err.println("Datanya Kosong Nih");
             return;
         }
         if (head == tail) {
@@ -153,7 +157,7 @@ class SinglyLinkedList {
 
     void remove(Object targetData) {
         if (isEmpty()) {
-            System.out.println("Datanya Kosong Nih");
+            System.err.println("Datanya Kosong Nih");
             return;
         }
 
@@ -179,21 +183,85 @@ class SinglyLinkedList {
             }
             temp = temp.next;
         }
-        System.out.println("Data tidak ditemukan " + targetData);
+        System.err.println("Data tidak ditemukan " + targetData);
+    }
+
+    void insertAt(int index, Object data) {
+        Node newNode = new Node(data);
+        if (isEmpty() && index == 0) {
+            head = newNode;
+            size++;
+            return;
+        } else if (isEmpty() && index != 0) {
+            System.err.println("Waduh, SSL-nya masih kosong mas");
+            return;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            if (i != index - 1) {
+                temp = temp.next;
+            } else {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                size++;
+                return;
+            }
+        }
+    }
+
+    void removeAt(int index) {
+        Node temp = head;
+
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        size--;
+    }
+
+    Object get(int index) {
+        if (index < 0) {
+            System.err.println("Index tidak boleh kurang dari 0");
+            return null;
+        } else if (index >= size) {
+            System.err.println("Input melebihi maksimum index");
+            return null;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp.data;
+    }
+
+    int indexOf (Object data) {
+        Node temp = head;
+        int index = 0;
+
+        while (temp != null) {
+
+            if (temp.data.equals((data))) {
+                return index;
+            }
+            temp = temp.next;
+            index++;
+        }
+        return -1;
     }
 
     public void printSLL() {
         Node temp = head;
         if (isEmpty()) {
-            System.out.println("Datanya Kosong nih");
+            System.err.println("Datanya Kosong Nih");
             return;
         }
 
         while (temp != null) {
-            System.out.print(temp.data);
-            if (temp.next != null)
-                System.out.print(" - ");
+            System.out.print(temp.data + " -> ");
             temp = temp.next;
+            if (temp == null) System.out.print("Null");
         }
         System.out.println();
     }
