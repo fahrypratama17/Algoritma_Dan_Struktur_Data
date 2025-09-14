@@ -50,7 +50,7 @@ class Node {
 }
 
 class SinglyLinkedList {
-    Node head = null, tail = null;
+    Node head, tail = null;
     int size = 0;
 
     boolean isEmpty () {
