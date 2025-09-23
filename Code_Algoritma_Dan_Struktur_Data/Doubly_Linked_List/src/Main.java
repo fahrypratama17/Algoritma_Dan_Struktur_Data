@@ -145,7 +145,6 @@ class DoublyLinkedList {
         } else {
             head = head.next;
             head.prev = null;
-
         }
         size--;
     }
