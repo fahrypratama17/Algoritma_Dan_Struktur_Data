@@ -6,18 +6,25 @@ public class Main {
         CDLL.addFirst("C");
         CDLL.addFirst("D");
         CDLL.printHeadToTail("Print Pertama:");
+        CDLL.printTailToHead();
         CDLL.insertAfter("B", new Node("S"));
         CDLL.printHeadToTail("InsertAfter B, sisip S:");
+        CDLL.printTailToHead();
         CDLL.insertBefore("S", new Node("Z"));
         CDLL.printHeadToTail("InsertBefore S, sisip Z:");
+        CDLL.printTailToHead();
         CDLL.insertAt(3, new Node("P"));
         CDLL.printHeadToTail("InsertAt 3, sisip P:");
+        CDLL.printTailToHead();
         CDLL.removeFirst();
         CDLL.printHeadToTail("RemoveFirst, hapus D:");
+        CDLL.printTailToHead();
         CDLL.removeLast();
         CDLL.printHeadToTail("RemoveLast, hapus A:");
+        CDLL.printTailToHead();
         CDLL.remove("P");
         CDLL.printHeadToTail("Remove, hapus P:");
+        CDLL.printTailToHead();
         CDLL.addFirst("Q");
         CDLL.addFirst("W");
         CDLL.addFirst("E");
@@ -26,8 +33,10 @@ public class Main {
         CDLL.addFirst("Y");
         CDLL.addFirst("U");
         CDLL.printHeadToTail("Tambah Data:");
+        CDLL.printTailToHead();
         CDLL.removeAt(1);
         CDLL.printHeadToTail("RemoveAt index 1, hapus Y:");
+        CDLL.printTailToHead();
         System.out.println("Get index 3, return E:");
         System.out.println(CDLL.get(3));
         System.out.println("IndexOf mengecek E, return 3:");
@@ -295,6 +304,19 @@ class CircularDoublyLinkedList {
             System.out.print(temp.data + " - ");
             temp = temp.next;
         } while (temp != head);
+        System.out.println();
+    }
+    void printTailToHead(){
+        if (isEmpty()) {
+            System.err.println("Maaf CDLL masih kosong nih");
+            return;
+        }
+
+        Node temp = tail;
+        do {
+            System.out.print(temp.data + " - ");
+            temp = temp.prev;
+        } while (temp != tail);
         System.out.println();
     }
 }
