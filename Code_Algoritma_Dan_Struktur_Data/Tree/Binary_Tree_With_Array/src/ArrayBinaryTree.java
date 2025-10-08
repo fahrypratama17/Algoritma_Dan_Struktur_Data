@@ -1,4 +1,4 @@
-public class ArrayBinnaryTree {
+public class ArrayBinaryTree {
     public static void main(String[] args) {
         ABT t = new ABT(10);
         t.setRoot("A");
