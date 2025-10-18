@@ -9,7 +9,7 @@ public class queue_array {
     char arr_stack[] = new char[MAX_SIZE];
     int count = 0;
     int keluar = 0;
-    int front, rear=0;
+    int front, rear= 0;
 
     public void enqueue(char item) {
         if (rear == MAX_SIZE) {
