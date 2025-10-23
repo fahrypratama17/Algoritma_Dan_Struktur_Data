@@ -77,7 +77,7 @@ public class TowerDefenseLabyrinth {
             boolean[][] sudahDilalui = new boolean[sizeLabirin][sizeLabirin];
 
             peserta.steps = 0;
-            solveMaze(peserta, sudahDilalui, start.x, start.y, finish.x, finish.y, lab);
+            LabirinJalan(peserta, sudahDilalui, start.x, start.y, finish.x, finish.y, lab);
 
             pq.enqueue(peserta);
         }
@@ -124,7 +124,7 @@ public class TowerDefenseLabyrinth {
         return (fastestPeserta != null) ? fastestPeserta.steps : Integer.MAX_VALUE;
     }
 
-    static boolean solveMaze(Peserta p, boolean[][] sudahDilalui, int sx, int sy, int fx, int fy, Labirin lab) {
+    static boolean LabirinJalan(Peserta p, boolean[][] sudahDilalui, int sx, int sy, int fx, int fy, Labirin lab) {
         if (sx < 0 || sx >= lab.size || sy < 0 || sy >= lab.size || !lab.bisaDilalui[sx][sy] || sudahDilalui[sx][sy]) {
             return false;
         }
@@ -149,7 +149,7 @@ public class TowerDefenseLabyrinth {
                 case "LEFT" -> nextX--;
             }
 
-            if (solveMaze(p, sudahDilalui, nextX, nextY, fx, fy, lab)) {
+            if (LabirinJalan(p, sudahDilalui, nextX, nextY, fx, fy, lab)) {
                 return true;
             }
         }
