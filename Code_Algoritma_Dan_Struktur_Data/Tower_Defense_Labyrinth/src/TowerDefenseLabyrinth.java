@@ -1,6 +1,9 @@
-// ---------------------------------------------
-// Tugas 1 - Tower Defense Labyrinth (OPTIMIZED)
-// ---------------------------------------------
+/*
+ * 245150207111046 Muhamad Fahry Pratama Putra
+ * 245150201111043 Aniza Helwa Mahanani
+ * 245150207111057 Niquita Aislam Az Zahara
+ * 245150200111005 Aldin Izyan Noor
+ */
 
 import java.util.Scanner;
 
@@ -125,13 +128,13 @@ public class TowerDefenseLabyrinth {
     }
 
     static boolean LabirinJalan(Peserta p, boolean[][] sudahDilalui, int sx, int sy, int fx, int fy, Labirin lab) {
-        if (sx < 0 || sx >= lab.size || sy < 0 || sy >= lab.size || !lab.bisaDilalui[sx][sy] || sudahDilalui[sx][sy]) {
+        if (sx < 0 || sx >= lab.size || sy < 0 || sy >= lab.size || !lab.bisaDilalui[sy][sx] || sudahDilalui[sy][sx]) {
             return false;
         }
 
         p.steps++;
-        sudahDilalui[sx][sx] = true;
-        p.pathNumbers[sx][sx] = p.steps;
+        sudahDilalui[sy][sx] = true;
+        p.pathNumbers[sy][sx] = p.steps;
 
         if (sx == fx && sy == fy) {
             return true;
